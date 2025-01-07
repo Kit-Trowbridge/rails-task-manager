@@ -8,4 +8,10 @@
   <%= f.submit %>
 <% end %>
 
+<%= link_to 'Delete this task',
+  # here we need to use the instance variable of @task as argument bc it's not product of iteration
+  task_path(@task),
+  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}
+%>
+
 <%= link_to 'Back to list', tasks_path %>

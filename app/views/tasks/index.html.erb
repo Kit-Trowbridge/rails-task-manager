@@ -4,7 +4,13 @@
   <% @tasks.each do |task| %>
     <%# because the show path is dynamic, have to give it the argument of the task (rails auto retrieves the id) %>
     <%# otherwise, you'll get the error missing required keys: [:id] %>
-    <li><%= link_to task.title, task_path(task) %></li>
+    <li>
+      <%= link_to task.title, task_path(task) %>
+      <%= link_to 'Delete this task',
+      task_path(task),
+      data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}
+      %>
+    </li>
   <% end %>
 </ul>
 
