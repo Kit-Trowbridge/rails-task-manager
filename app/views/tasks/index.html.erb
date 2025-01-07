@@ -2,6 +2,8 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= task.title %></li>
+    <%# because the show path is dynamic, have to give it the argument of the task (rails auto retrieves the id) %>
+    <%# otherwise, you'll get the error missing required keys: [:id] %>
+    <li><%= link_to task.title, task_path(task) %></li>
   <% end %>
 </ul>
