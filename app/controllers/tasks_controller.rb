@@ -31,6 +31,13 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
+  def update
+    @task = Task.find(params[:id])
+    # need to give task something to update with (task_params hash corresponds with SQL values... I think)
+    @task.update(task_params)
+    redirect_to task_path
+  end
+
   private
 
   def task_params
